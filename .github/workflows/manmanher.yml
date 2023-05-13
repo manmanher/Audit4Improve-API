@@ -6,17 +6,22 @@ on:
  project_column: 
   types: [moved]
 jobs:
- Prueba:
+  build:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_LOGIN: ${{ github.actor }}
-      GITHUB_PACKAGES: ${{ secrets.GITHUB_TOKEN }}
-      GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
-      
-     steps:
-      -name: Cache Primes
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Cache Primes
+      id: cache-primes
       uses: actions/cache@v3
-       with:
+      with:
         path: prime-numbers
         key: ${{ runner.os }}-primes
-        
+
+    - name: Generate Prime Numbers
+      if: steps.cache-primes.outputs.cache-hit != 'true'
+      run: /generate-primes.sh -d prime-numbers
+
+    - name: Use Prime Numbers
+      run: /primes.sh -d prime-numbers
