@@ -1,0 +1,18 @@
+name: Flujo de trabajo para ejecutar los test
+on:
+ workflow_dispatch:
+ issues:
+  types: [opened,edited]
+ project_column: 
+  types: [moved]
+jobs:
+ Snake:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_LOGIN: ${{ github.actor }}
+      GITHUB_PACKAGES: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Juego snake
+        uses: Platane/snk/svg-only@v2
+        
