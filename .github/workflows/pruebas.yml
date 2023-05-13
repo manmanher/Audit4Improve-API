@@ -14,8 +14,6 @@ jobs:
       GITHUB_LOGIN: ${{ github.actor }}
       GITHUB_PACKAGES: ${{ secrets.GITHUB_TOKEN }}
       GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
-    outputs:
-      result: ${{ steps.pasoBuild.outputs.Clonando el repositorio y estableciendo el espacio de trabajo}}
     steps:
       - name: Clonando el repositorio y estableciendo el espacio de trabajo
         uses: actions/checkout@v3
@@ -32,10 +30,13 @@ jobs:
          
   Test:
    runs-on: ubuntu-latest
+   env:
+      GITHUB_LOGIN: ${{ github.actor }}
+      GITHUB_PACKAGES: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
    needs: Build    
    steps:
       - name: Ejecutando pruebas
-        if: needs.Build.result == 'success'
         run: |
           chmod +x gradlew        
           ./gradlew test
