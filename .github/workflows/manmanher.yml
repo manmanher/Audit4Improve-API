@@ -1,4 +1,4 @@
-name: Flujo de trabajo para ejecutar los test
+name: Pipeline creado para la cuestión 12 de la práctica.
 on:
  workflow_dispatch:
  issues:
