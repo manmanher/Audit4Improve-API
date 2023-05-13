@@ -15,7 +15,7 @@ jobs:
       GITHUB_PACKAGES: ${{ secrets.GITHUB_TOKEN }}
       GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
     outputs:
-      result: ${{ steps.pasoBuild.outputs}}
+      result: ${{ steps.pasoBuild.outputs.Clonando el repositorio y estableciendo el espacio de trabajo}}
     steps:
       - name: Clonando el repositorio y estableciendo el espacio de trabajo
         uses: actions/checkout@v3
