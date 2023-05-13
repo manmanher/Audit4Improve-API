@@ -14,5 +14,5 @@ jobs:
       GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Juego snake
-        uses: Platane/snk/svg-only@v2
+        uses: Platane/snk@v2
         
