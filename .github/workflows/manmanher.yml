@@ -12,10 +12,11 @@ jobs:
       GITHUB_LOGIN: ${{ github.actor }}
       GITHUB_PACKAGES: ${{ secrets.GITHUB_TOKEN }}
       GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
-    steps:
+      
+     steps:
       -name: Cache Primes
       uses: actions/cache@v3
-      with:
+       with:
         path: prime-numbers
         key: ${{ runner.os }}-primes
         
