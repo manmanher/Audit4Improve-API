@@ -26,12 +26,14 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/mit-fs/audit4improve-api")         
+            url = uri("https://maven.pkg.github.com/manmanher/Audit4Improve-API")         
             credentials {
             //las propiedades gpr.user y gpr.key están configuradas en gradle.properties en el raiz del proyecto, y se añade a .gitignore para que no se suban
             //O bien configuro las variables de entorno GITHUB_LOGIN y GITHUB_PACKAGES
-                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_LOGIN")
-                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_PACKAGES")
+                //username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_LOGIN")
+                //password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_PACKAGES")
+                username = "manmanher"
+                password = "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"
                 }
         }
     }
@@ -41,7 +43,7 @@ publishing {
         
             groupId = 'us.mitfs.samples'
             artifactId = 'a4i'
-            version = '0.0'
+            version = '0.0.1-manmanher'
 
             from components.java
         }
