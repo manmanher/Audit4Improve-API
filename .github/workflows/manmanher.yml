@@ -6,7 +6,7 @@ on:
  project_column: 
   types: [moved]
 jobs:
- Snake:
+ Prueba:
     runs-on: ubuntu-latest
     env:
       GITHUB_LOGIN: ${{ github.actor }}
