@@ -14,6 +14,8 @@ jobs:
       GITHUB_LOGIN: ${{ github.actor }}
       GITHUB_PACKAGES: ${{ secrets.GITHUB_TOKEN }}
       GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
+    outputs:
+      result: ${{ steps.pasoBuild.outputs}}
     steps:
       - name: Clonando el repositorio y estableciendo el espacio de trabajo
         uses: actions/checkout@v3
@@ -23,6 +25,18 @@ jobs:
           distribution: 'temurin'
           java-version: '16'
       - name: Construyendo y probando el código
+        id: pasoBuild
         run: |
           chmod +x gradlew        
           ./gradlew build
+         
+  Test:
+   runs-on: ubuntu-latest
+   needs: Build    
+   steps:
+      - name: Ejecutando pruebas
+        if: needs.Build.result == 'success'
+        run: |
+          chmod +x gradlew        
+          ./gradlew test
+  
